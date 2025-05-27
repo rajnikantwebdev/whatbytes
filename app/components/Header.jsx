@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <nav className="navbar secondary-bg shadow-sm flex item-center justify-between">
+    <nav className="navbar fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
       <div className="">
         <a className="btn btn-ghost text-xl">WhatBytes</a>
       </div>
