@@ -9,7 +9,7 @@ const Filters = () => {
     setSelectedFilter(event.target.value);
   };
   return (
-    <div className="secondary-bg min-w-3xs rounded-lg px-6 py-4 mt-28 max-w-3xs">
+    <div className="secondary-bg min-w-3xs rounded-lg px-6 py-8 mt-28 max-w-3xs">
       <h2 className="text-2xl mb-4">Filters</h2>
 
       <ul className="mb-4">

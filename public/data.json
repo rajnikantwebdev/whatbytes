@@ -1,0 +1,42 @@
+[
+  {
+    "imageSrc": "https://i.ibb.co/JR8zT3ym/1.jpg",
+    "productName": "Running Shoes",
+    "productPrice": 5000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/v4Y1WBHR/61-RFl-IUea-IL-SY695.jpg",
+    "productName": "Sports Shoes",
+    "productPrice": 3000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/BHTDfq6W/31-G4-L00m-Bj-L-SY300-SX300.jpg",
+    "productName": "Backpack",
+    "productPrice": 14000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/Gvg6QfTb/41-RCVs-Qk-YDL-SX300-SY300-QL70-FMwebp.webp",
+    "productName": "Smart Watch",
+    "productPrice": 4000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/gZV8YJ4M/51-Tcd-Ex-Sb-L-SX679.jpg",
+    "productName": "Sun glasses",
+    "productPrice": 2000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/rfFwTFtz/51yuln-XQYm-L-SY300-SX300-QL70-FMwebp.webp",
+    "productName": "Digital Camera",
+    "productPrice": 80000
+  },
+  {
+    "imageSrc": "https://i.ibb.co/KcLcL2fk/61-NVTARMyo-L-SY879.jpg",
+    "productName": "T-shirt",
+    "productPrice": 1400
+  },
+  {
+    "imageSrc": "https://i.ibb.co/DJNsRhS/71657-Ti-Fe-HL-SX679.jpg",
+    "productName": "Iphone 15",
+    "productPrice": 50000
+  }
+]
