@@ -1,11 +1,37 @@
+"use client"
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useProductStore from '../utilities/productStore';
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 const Header = () => {
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const query = new URLSearchParams(searchParams.toString());
+      if (searchText.trim() !== "") query.set("search", searchText);
+      else query.delete("search");
+
+      router.push(`/?${query.toString()}`, { scroll: false });
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [searchText]);
+  
+
+  // useEffect(() => {
+  //   updateSearchQuery(searchText)
+  // }, [searchText])
   return (
     <nav className="navbar z-30 fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
       <div className="">
-        <Link href={"/"} className="text-xl">WhatBytes</Link>
+        <Link href={"/"} className="text-xl">
+          WhatBytes
+        </Link>
       </div>
       <div>
         <label className="input bg-transparent w-100">
@@ -25,6 +51,8 @@ const Header = () => {
             <circle cx="11" cy="11" r="8" />
           </svg>
           <input
+            value={searchText}
+            onChange={(e) =>  setSearchText(e.target.value)}
             type="search"
             className="grow bg-transparent"
             placeholder="Search for products..."

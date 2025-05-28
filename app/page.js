@@ -6,11 +6,7 @@ import ProductListing from "./components/ProductListing";
 export default function Home() {
   return (
     <main className="px-16">
-     
-      <div className="flex items-start gap-24">
-      
       <ProductListing />
-      </div>
     </main>
   );
 }

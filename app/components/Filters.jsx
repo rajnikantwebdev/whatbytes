@@ -3,9 +3,13 @@ import React from 'react'
 import { useState } from 'react';
 
 const Filters = ({
-  filtersArray, selectedFilter,
+  filtersArray,
+  selectedFilter,
   setSelectedFilter,
   handleFilterChange,
+  minPrice,
+  maxPrice,
+  handlePriceChange,
 }) => {
   return (
     <div className="secondary-bg min-w-3xs rounded-lg px-6 py-8 mt-28 max-w-3xs">
@@ -34,11 +38,28 @@ const Filters = ({
       </ul>
 
       <div>
-        <h3 className="text-lg mb-2">Price</h3>
-        <div className="flex items-center gap-1">
-          <span>0</span>
-          <progress className="progress w-full" value="10" max="100"></progress>
-          <span>1000</span>
+        <h3 className="text-lg font-semibold mb-2">Price</h3>
+        <div className="flex items-center gap-4">
+          <span className="text-sm">${minPrice}</span>
+          <input
+            type="range"
+            min="1000"
+            max="20000"
+            value={minPrice}
+            onChange={(e) => handlePriceChange(e, "min")}
+            className="w-full"
+            aria-label="Minimum price"
+          />
+          {/* <input
+            type="range"
+            min="1000"
+            max="20000"
+            value={maxPrice}
+            onChange={(e) => handlePriceChange(e, "max")}
+            className="w-full"
+            aria-label="Maximum price"
+          /> */}
+          <span className="text-sm">${maxPrice}</span>
         </div>
       </div>
     </div>

@@ -1,119 +1,79 @@
 import { create } from "zustand";
 
 const useProductStore = create((set, get) => ({
-    products: [],
-    filteredProducts: [],
-    loading: true,
-    error: null,
-    filterCategory: "all",
-    sortOption: "default",
+  products: [],
+  filteredProducts: [],
+  loading: true,
+  error: null,
+  filterCategory: "all",
+  sortOption: "default",
+  searchQuery: null,
+  minPrice: 1000,
+  maxPrice: 20000,
 
-    // fetchProducts: async (filters) => {
-    //     if(filters === "all") {
-    //         try {
-    //             set({ loading: true, error: null });
-    //             const response = await fetch("/data.json");
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
-    //             const data = await response.json();
-    //             set({ products: data, loading: false });
-    //         } catch (error) {
-    //             set({ loading: false, error: error.message });
-    //         }
-    //     } else if(filters === "electronics") {
-    //         try {
-    //             set({ loading: true, error: null });
-    //             const response = await fetch("/data.json");
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
-    //             const data = await response.json()
-    //             const result = data.filter((d) => d.category === filters)
+  fetchProducts: async () => {
+    try {
+      set({ loading: true, error: null });
+      const response = await fetch("/data.json");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${ response.status } `);
+      }
+      const data = await response.json();
+      set({ products: data, filteredProducts: data, loading: false });
+    } catch (error) {
+      set({ loading: false, error: error.message });
+    }
+  },
 
-    //             set({ products: result, loading: false });
-    //         } catch (error) {
-    //             set({ loading: false, error: error.message });
-    //         }
-    //     } else if (filters === "clothing") {
-    //         try {
-    //             set({ loading: true, error: null });
-    //             const response = await fetch("/data.json");
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
-    //             const data = await response.json()
-    //             const result = data.filter((d) => d.category === filters)
+  updateSearchQuery: (searchText) => {
+    set({searchQuery: searchText})
+  },
 
-    //             set({ products: result, loading: false });
-    //         } catch (error) {
-    //             set({ loading: false, error: error.message });
-    //         }
-    //     }
+  applyUrlFilters: (query) => {
+    set((state) => {
+      const { products } = state;
+      const category = query.category || "all";
+      const priceRange = query.price ? query.price.split("-").map(Number) : [1000, 20000];
+      const [minPrice, maxPrice] = priceRange;
+      const searchQuery = query.search || null;
 
-    //     else if (filters === "home") {
-    //         try {
-    //             set({ loading: true, error: null });
-    //             const response = await fetch("/data.json");
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
-    //             const data = await response.json()
-    //             const result = data.filter((d) => d.category === filters)
+      const filteredProducts = get().updateFilteredProducts({
+        products,
+        filterCategory: category,
+        searchQuery,
+        minPrice,
+        maxPrice,
+      });
 
-    //             set({ products: result, loading: false });
-    //         } catch (error) {
-    //             set({ loading: false, error: error.message });
-    //         }
-    //     }
-        
-    // },
+      console.log(filteredProducts)
 
-    fetchProducts: async () => {
-        try {
-            set({ loading: true, error: null });
-            const response = await fetch("/data.json");
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            set({ products: data, filteredProducts: data, loading: false });
-        } catch (error) {
-            set({ loading: false, error: error.message });
-        }
-    },
+      return { filterCategory: category, minPrice, maxPrice, searchQuery, filteredProducts };
+    });
+  },
 
-    // Set filter category and update filtered products
-    setFilterCategory: (category) => {
-        console.log("category: ", category)
-        set({ filterCategory: category });
-        const { products } = get();
-        console.log("products-filter: ", products)
-        useProductStore.getState().updateFilteredProducts({ products, filterCategory: category });
-      },
+  updateFilteredProducts: ({ products, filterCategory, searchQuery, minPrice, maxPrice }) => {
+    let filteredProducts = [...products];
+      
+    if (searchQuery) {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
 
-    updateFilteredProducts: ({ products, filterCategory }) =>
-        set(() => {
-            let filteredProducts = [...products];
+    if (filterCategory !== "all") {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.category === filterCategory
+      );
+      console.log("filter-cate: ", filteredProducts)
+    }
 
-            // Filter by category
-            if (filterCategory !== "all") {
-                filteredProducts = filteredProducts.filter(
-                    (product) => product.category === filterCategory
-                );
-            }
+    filteredProducts = filteredProducts.filter(
+        (product) => product.productPrice >= minPrice && product.productPrice <= maxPrice
+    );
+      console.log("filter-cate-before: ", filteredProducts)
 
-            // Sort products
-            // if (sortOption === "priceLowToHigh") {
-            //     filteredProducts.sort((a, b) => a.productPrice - b.productPrice);
-            // } else if (sortOption === "priceHighToLow") {
-            //     filteredProducts.sort((a, b) => b.productPrice - a.productPrice);
-            // } else if (sortOption === "ratingsHighToLow") {
-            //     filteredProducts.sort((a, b) => b.productRatings - a.productRatings);
-            // }
-            console.log("filtered: ", filteredProducts)
-            return { filteredProducts };
-        }),
-}))
+    return filteredProducts;
+  },
+}));
 
-export default useProductStore
+export default useProductStore;
