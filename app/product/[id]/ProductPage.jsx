@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import useCartStore from "@/app/utilities/cartStore";
 
 const ProductPage = () => {
   const [product, setProduct] = useState(null);
@@ -33,11 +34,10 @@ const ProductPage = () => {
     if (value >= 1) setQuantity(value);
   };
 
-  // Add to Cart handler
+  const { addToCart } = useCartStore();
+
   const handleAddToCart = () => {
-    if (product) {
-      alert(`Added ${quantity} ${product.productName} to cart!`);
-    }
+    addToCart(product);
   };
 
   if (loading || !product) {

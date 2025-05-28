@@ -1,29 +1,34 @@
 "use client"
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import useProductStore from '../utilities/productStore';
-import { useRouter, useSearchParams } from "next/navigation";
-
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname(); // Get current route
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const query = new URLSearchParams(searchParams.toString());
-      if (searchText.trim() !== "") query.set("search", searchText);
-      else query.delete("search");
+      if (pathname === "/") {
+        const query = new URLSearchParams(searchParams.toString());
 
-      router.push(`/?${query.toString()}`, { scroll: false });
-    }, 500);
+        if (searchText.trim() !== "") {
+          query.set("search", searchText);
+        } else {
+          query.delete("search");
+        }
+
+        router.push(`/?${query.toString()}`, { scroll: false });
+      }
+    }, 500); // debounce
 
     return () => clearTimeout(timeout);
-  }, [searchText]);
-  
+  }, [searchText, pathname]);
+
   return (
-    <nav className="navbar z-30 fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
+    <nav className="navbar px-8 z-30 fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
       <div className="">
         <Link href={"/"} className="text-xl">
           WhatBytes
@@ -48,7 +53,7 @@ const Header = () => {
           </svg>
           <input
             value={searchText}
-            onChange={(e) =>  setSearchText(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value)}
             type="search"
             className="grow bg-transparent"
             placeholder="Search for products..."
@@ -57,42 +62,31 @@ const Header = () => {
           <kbd className="kbd kbd-sm">K</kbd> */}
         </label>
       </div>
-      <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-            <div className="indicator">
+        <div className="bg-black/50 px-6 py-2 rounded-2xl">
+          <Link href={"/cart"} className="">
+            <div className='flex gap-2 items-center'>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-shopping-cart-icon lucide-shopping-cart"
               >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />{" "}
+                <circle cx="8" cy="21" r="1" />
+                <circle cx="19" cy="21" r="1" />
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
               </svg>
-              <span className="badge badge-sm indicator-item">8</span>
+              <span>Cart</span>
             </div>
-          </div>
-          <div
-            tabIndex={0}
-            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow"
-          >
-            <div className="card-body">
-              <span className="text-lg font-bold">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
-              </div>
-            </div>
-          </div>
+            {/* <span className="badge badge-sm indicator-item">8</span> */}
+          </Link>
         </div>
-      </div>
+      
     </nav>
   );
 }

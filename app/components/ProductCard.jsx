@@ -1,4 +1,5 @@
 import React from "react";
+import useCartStore from "../utilities/cartStore";
 
 const ProductCard = ({
   imgSrc,
@@ -7,6 +8,15 @@ const ProductCard = ({
   productRatings,
   loading,
 }) => {
+
+  const { addToCart } = useCartStore();
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    e.preventDefault(); 
+    addToCart({ imgSrc, productName, productPrice, productRatings });
+  };
+
   if (loading) {
     return (
       <div className="w-48 shadow-xl bg-white rounded-2xl animate-pulse">
@@ -41,7 +51,7 @@ const ProductCard = ({
           <span className="text-black font-bold">$ {productPrice}</span>
         </div>
         <div>
-          <button className="secondary-bg px-4 py-2 rounded-xl my-3 cursor-pointer">
+          <button onClick={(e) => handleAddToCart(e)} className="secondary-bg px-4 py-2 rounded-xl my-3 cursor-pointer">
             Add to Cart
           </button>
         </div>
