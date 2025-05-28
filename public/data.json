@@ -2,41 +2,165 @@
   {
     "imageSrc": "https://i.ibb.co/JR8zT3ym/1.jpg",
     "productName": "Running Shoes",
-    "productPrice": 5000
+    "productPrice": 5000,
+    "productRatings": 4,
+    "reviews": [
+      {
+        "user": "Alice K.",
+        "rating": 4,
+        "comment": "Very comfortable for long runs!"
+      },
+      {
+        "user": "Bob L.",
+        "rating": 4,
+        "comment": "Good grip, but slightly heavy."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/v4Y1WBHR/61-RFl-IUea-IL-SY695.jpg",
     "productName": "Sports Shoes",
-    "productPrice": 3000
+    "productPrice": 3000,
+    "productRatings": 5,
+    "reviews": [
+      {
+        "user": "Emma W.",
+        "rating": 5,
+        "comment": "Perfect fit and stylish design!"
+      },
+      {
+        "user": "James P.",
+        "rating": 5,
+        "comment": "Great for both sports and casual wear."
+      },
+      {
+        "user": "Sophie R.",
+        "rating": 4,
+        "comment": "Really good, but laces wear out quickly."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/BHTDfq6W/31-G4-L00m-Bj-L-SY300-SX300.jpg",
     "productName": "Backpack",
-    "productPrice": 14000
+    "productPrice": 14000,
+    "productRatings": 3,
+    "reviews": [
+      {
+        "user": "Liam T.",
+        "rating": 3,
+        "comment": "Spacious but straps could be more padded."
+      },
+      {
+        "user": "Olivia M.",
+        "rating": 3,
+        "comment": "Decent for the price, but not waterproof."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/Gvg6QfTb/41-RCVs-Qk-YDL-SX300-SY300-QL70-FMwebp.webp",
     "productName": "Smart Watch",
-    "productPrice": 4000
+    "productPrice": 4000,
+    "productRatings": 2,
+    "reviews": [
+      {
+        "user": "Noah S.",
+        "rating": 2,
+        "comment": "Battery life is too short."
+      },
+      {
+        "user": "Mia C.",
+        "rating": 3,
+        "comment": "Nice features, but sync issues sometimes."
+      },
+      {
+        "user": "Ethan J.",
+        "rating": 2,
+        "comment": "Looks good but lacks advanced tracking."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/gZV8YJ4M/51-Tcd-Ex-Sb-L-SX679.jpg",
     "productName": "Sun glasses",
-    "productPrice": 2000
+    "productPrice": 2000,
+    "productRatings": 4,
+    "reviews": [
+      {
+        "user": "Ava B.",
+        "rating": 4,
+        "comment": "Stylish and great UV protection."
+      },
+      {
+        "user": "Lucas H.",
+        "rating": 4,
+        "comment": "Comfortable fit, but a bit pricey."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/rfFwTFtz/51yuln-XQYm-L-SY300-SX300-QL70-FMwebp.webp",
     "productName": "Digital Camera",
-    "productPrice": 80000
+    "productPrice": 80000,
+    "productRatings": 3,
+    "reviews": [
+      {
+        "user": "Isabella G.",
+        "rating": 3,
+        "comment": "Good image quality, but bulky."
+      },
+      {
+        "user": "Mason F.",
+        "rating": 3,
+        "comment": "Decent for professionals, but expensive."
+      },
+      {
+        "user": "Charlotte E.",
+        "rating": 4,
+        "comment": "Great for photography enthusiasts!"
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/KcLcL2fk/61-NVTARMyo-L-SY879.jpg",
     "productName": "T-shirt",
-    "productPrice": 1400
+    "productPrice": 1400,
+    "productRatings": 3,
+    "reviews": [
+      {
+        "user": "Elijah D.",
+        "rating": 3,
+        "comment": "Soft fabric, but shrinks after wash."
+      },
+      {
+        "user": "Amelia I.",
+        "rating": 3,
+        "comment": "Nice design, but sizing is off."
+      }
+    ]
   },
   {
     "imageSrc": "https://i.ibb.co/DJNsRhS/71657-Ti-Fe-HL-SX679.jpg",
     "productName": "Iphone 15",
-    "productPrice": 50000
+    "productPrice": 50000,
+    "productRatings": 4,
+    "reviews": [
+      {
+        "user": "William A.",
+        "rating": 4,
+        "comment": "Fast performance, great camera."
+      },
+      {
+        "user": "Sophia N.",
+        "rating": 4,
+        "comment": "Love the display, but battery could be better."
+      },
+      {
+        "user": "Henry V.",
+        "rating": 5,
+        "comment": "Best iPhone yet!"
+      }
+    ]
   }
 ]
