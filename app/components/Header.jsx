@@ -22,10 +22,6 @@ const Header = () => {
     return () => clearTimeout(timeout);
   }, [searchText]);
   
-
-  // useEffect(() => {
-  //   updateSearchQuery(searchText)
-  // }, [searchText])
   return (
     <nav className="navbar z-30 fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
       <div className="">
