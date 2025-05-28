@@ -8,7 +8,7 @@ export default function Home() {
     <main className="px-16">
      
       <div className="flex items-start gap-24">
-      <Filters />
+      
       <ProductListing />
       </div>
     </main>

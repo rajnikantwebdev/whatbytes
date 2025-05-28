@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import React from 'react'
 
 const Header = () => {
   return (
     <nav className="navbar z-30 fixed top-0 left-0 secondary-bg shadow-sm flex item-center justify-between">
       <div className="">
-        <a className="btn btn-ghost text-xl">WhatBytes</a>
+        <Link href={"/"} className="text-xl">WhatBytes</Link>
       </div>
       <div>
         <label className="input bg-transparent w-100">

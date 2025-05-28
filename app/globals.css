@@ -11,4 +11,5 @@
 
 body {
   background-color: #F8FCFF;
+  min-height: 100vh;
 }

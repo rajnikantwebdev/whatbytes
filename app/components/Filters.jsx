@@ -2,12 +2,11 @@
 import React from 'react'
 import { useState } from 'react';
 
-const Filters = () => {
-  const filtersArray = ["all", "electronics", "cloting", "home"];
-  const [selectedFilter, setSelectedFilter] = useState(filtersArray[0]);
-  const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value);
-  };
+const Filters = ({
+  filtersArray, selectedFilter,
+  setSelectedFilter,
+  handleFilterChange,
+}) => {
   return (
     <div className="secondary-bg min-w-3xs rounded-lg px-6 py-8 mt-28 max-w-3xs">
       <h2 className="text-2xl mb-4">Filters</h2>
@@ -44,6 +43,6 @@ const Filters = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Filters

@@ -4,6 +4,7 @@
     "productName": "Running Shoes",
     "productPrice": 5000,
     "productRatings": 4,
+    "category": "clothing",
     "reviews": [
       {
         "user": "Alice K.",
@@ -22,6 +23,7 @@
     "productName": "Sports Shoes",
     "productPrice": 3000,
     "productRatings": 5,
+    "category": "clothing",
     "reviews": [
       {
         "user": "Emma W.",
@@ -45,6 +47,7 @@
     "productName": "Backpack",
     "productPrice": 14000,
     "productRatings": 3,
+    "category": "accesories",
     "reviews": [
       {
         "user": "Liam T.",
@@ -63,6 +66,7 @@
     "productName": "Smart Watch",
     "productPrice": 4000,
     "productRatings": 2,
+    "category": "electronics",
     "reviews": [
       {
         "user": "Noah S.",
@@ -86,6 +90,7 @@
     "productName": "Sun glasses",
     "productPrice": 2000,
     "productRatings": 4,
+    "category": "accesories",
     "reviews": [
       {
         "user": "Ava B.",
@@ -104,6 +109,7 @@
     "productName": "Digital Camera",
     "productPrice": 80000,
     "productRatings": 3,
+    "category": "electronics",
     "reviews": [
       {
         "user": "Isabella G.",
@@ -127,6 +133,7 @@
     "productName": "T-shirt",
     "productPrice": 1400,
     "productRatings": 3,
+    "category": "clothing",
     "reviews": [
       {
         "user": "Elijah D.",
@@ -145,6 +152,7 @@
     "productName": "Iphone 15",
     "productPrice": 50000,
     "productRatings": 4,
+    "category": "electronics",
     "reviews": [
       {
         "user": "William A.",
